@@ -84,7 +84,7 @@ export default {
 						return ACTIONS.BUY;
 					}
 				}
-			} else if(d.getDate() <= 5) { //We only allow SELL ations from untill the 6th of each month
+			} else if(d.getDate() <= 5) { //We only allow SELL actions from the start of the month and untill the 6th
 				if(firstTradingDay) {
 					firstTradingDay = false;
 					updateTrendWindow(month, price-endMonth);
