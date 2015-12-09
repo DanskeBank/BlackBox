@@ -1,9 +1,5 @@
 'use strict';
 
-/*
- * NOTE: Don't forget to add the algorithm to the list of to be run inside application.js
- */
-
 const ACTIONS = {
     BUY: 'Buy',
     SELL: 'Sell',
