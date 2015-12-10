@@ -14,6 +14,7 @@ public class MovingAverage implements IClientContract{
 	private int ticksForUpwardTrend;
 	private FixedSizeQueue queue;
 	private LinkedList<Double> movingAverage;
+	private boolean hasBought = false;
 	
 	
 	public MovingAverage(int ticksOfAverage, int ticksForUpwardTrend) {
@@ -37,8 +38,17 @@ public class MovingAverage implements IClientContract{
 		movingAverage.addFirst(getMovingAverage());
 		if (movingAverage.size() < ticksForUpwardTrend) return TradeAction.DO_NOTHING;
 		
-		if (hasUpwardTrend()) return TradeAction.BUY;
-		return TradeAction.SELL;
+		
+		if (hasUpwardTrend() && !hasBought )  {
+			hasBought = true;
+			return TradeAction.BUY;
+		}
+		if (!hasUpwardTrend() && hasBought){
+			hasBought = false;
+			return TradeAction.SELL;
+		}
+		return TradeAction.DO_NOTHING;
+		
 		
 		
 	}
