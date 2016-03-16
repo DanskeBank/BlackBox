@@ -11,11 +11,12 @@
         {
             get
             {
-                return "YOUR_SHORT_NAME_HERE";
+                return "TSP";
             }
         }
 
-        private bool _hasPosition = true;
+        private decimal previous1 = 0;
+        private decimal previous2 = 0;
 
         /// <summary>
         /// Implement this method with your trading strategy
@@ -29,11 +30,20 @@
         /// <returns>You need to return one decission out of three possible - Buy, Sell or DoNothing</returns>
         public TradeAction Run(decimal price)
         {
-            _hasPosition = !_hasPosition;
-            if (_hasPosition)
-                return TradeAction.Sell;
+            TradeAction action = TradeAction.DoNothing;
 
-            return TradeAction.Buy;
+            if (price > previous1 && price > previous2)
+            {
+                action = TradeAction.Buy;
+            }
+            else if (price < previous1 && price < previous2)
+            {
+                action = TradeAction.Sell;
+            }
+
+            previous2 = previous1;
+            previous1 = price;
+            return action;
         }
     }
 }
