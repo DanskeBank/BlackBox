@@ -42,7 +42,7 @@ public class ClientSample implements IClientContract {
 			this.buyPrice = price;
 			this.hasStock = true;
 			this.profit -= price;
-		} else if ((this.avarage < this.buyPrice && this.minDiff > this.avarage - price && this.avarage > price) || (this.avarage < price*(1+this.margin)) || (this.buyPrice*1.03 < price)) {
+		} else if ((this.avarage < this.buyPrice && this.minDiff > this.avarage - price && this.avarage > price && this.hasStock) || (this.avarage < price*(1+this.margin) && this.hasStock) || (this.buyPrice*1.03 < price && this.hasStock)) {
 			if(this.hasStock)
 			ta = TradeAction.SELL;
 			this.buyPrice = 0;
@@ -55,7 +55,7 @@ public class ClientSample implements IClientContract {
 		this.localMaxPrice = getLocalMax(this.priceHistory);
 
 		this.minDiff = this.avarage - this.localMinPrice;
-		
+		System.out.println("Count: " + count + " ........ Profit: " + this.profit + " ....... Price: " + price + " ........ Avarage: " + this.avarage);
 		return ta;
 	}
 	
