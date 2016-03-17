@@ -55,7 +55,7 @@ public class ClientSample implements IClientContract {
 		this.localMaxPrice = getLocalMax(this.priceHistory);
 
 		this.minDiff = this.avarage - this.localMinPrice;
-		System.out.println("Count: " + count + " ........ Profit: " + this.profit + " ....... Price: " + price + " ........ Avarage: " + this.avarage);
+		
 		return ta;
 	}
 	
