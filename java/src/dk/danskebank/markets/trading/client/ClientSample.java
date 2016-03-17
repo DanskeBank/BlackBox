@@ -21,12 +21,12 @@ public class ClientSample implements IClientContract {
 	public TradeAction tick(double price) {
 		return TradeAction.BUY;  
 		
-		if(profit < 0){
+		if(profit < 0 && hasBought){
 			
 		return TradeAction.SELL;}
 		
 		
-		else if(profit > 0){
+		else if(profit > 0 && !hasBought){
 			
 			
 			return TradeAction.BUY;
