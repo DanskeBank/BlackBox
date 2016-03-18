@@ -18,6 +18,7 @@ public class ClientSample implements IClientContract {
 	private double average = 0;
 	private List<Double> averageList = new ArrayList<>();
 	private boolean hasStock = false;
+	private double lastBuy;
 
 	@Override
 	public String getStrategyName() {
@@ -30,7 +31,7 @@ public class ClientSample implements IClientContract {
 		TradeAction ta = TradeAction.DO_NOTHING;
 		
 		
-		if (count < 25) {
+		if (count < 50) {
 			averageList.add(price);
 		} else {
 			averageList.remove(0);
@@ -57,16 +58,14 @@ public class ClientSample implements IClientContract {
 		if (shouldBuy(price) && !hasStock) {
 			ta = TradeAction.BUY;
 			this.hasStock = true;
-			profit -= price;
-//			System.out.println("BUY");
+			this.profit -= price;
+			this.lastBuy = price;
 			
 			
 		} else if (shouldSell(price) && hasStock) {
 			ta = TradeAction.SELL;
 			this.hasStock = false;
-			profit += price;
-//			System.out.println("SELL");
-			System.out.println(profit);
+			this.profit += price;
 		}
 		
 		if (price < min) {
@@ -92,6 +91,14 @@ public class ClientSample implements IClientContract {
 
 
 	private boolean shouldBuy(double value) {
-		return value < average*0.98732;
+		return value < average*0.90;
+	}
+	
+	public double getLastBuy() {
+		return lastBuy;
+	}
+	
+	public double getProfit() {
+		return this.profit;
 	}
 } 
