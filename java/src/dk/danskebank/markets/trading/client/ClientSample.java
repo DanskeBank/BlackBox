@@ -22,7 +22,7 @@ public class ClientSample implements IClientContract {
 
 	@Override
 	public String getStrategyName() {
-		return "MyThirdStrategy";
+		return "StockStrategy";
 	}
 	
 
