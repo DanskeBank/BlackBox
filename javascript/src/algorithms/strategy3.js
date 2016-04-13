@@ -12,7 +12,7 @@ function sign (number) {
 }
 
 export default {
-    participant: 'Golden Cross',
+    participant: 'Henrik Gustafsson: Golden-Death Cross',
     getInstance: function () {
 
         /*
@@ -28,17 +28,18 @@ export default {
         var newSign         = 0;
         var act             = false;
 
-
         const shortFactor   = 2 / 51;
         const longFactor    = 2 / 201;
 
         return function (price, date) {
 
             /* 
-            This algorithm is a standard golden cross/ death cross algortihm built
-            on EMA with a short on length 50 and a long with length 200. This is trading
-            days and not days. 
+            A classic trading algorithm, Golden and Death Cross. Looks at two EMA of different 
+            lengths, here 50 and 200 days and trades when the difference between them switches 
+            sign. 
+            Outperforms the two other models and the test sums to 1721.
             */
+
             oldSign = sign(shortEMA - longEMA);
 
             shortEMA    = (1 - shortFactor) * price + shortFactor * shortEMA;

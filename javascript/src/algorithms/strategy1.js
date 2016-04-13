@@ -8,7 +8,7 @@ const ACTIONS = {
 };
 
 export default {
-    participant: 'Henrik Gustafsson',
+    participant: 'Henrik Gustafsson: Up and Down',
     getInstance: function () {
 
         /*
@@ -26,6 +26,10 @@ export default {
         var down            = true;
 
         return function (price, date) {
+            /*
+            Simplest possible algorithm, if we are in the money and the price went down relative with yesterday, sell. 
+            If the price went up relative to yesterday, buy. Performs relative well, the test sums to 1157. 
+            */
 
             if (price > oldPrice){
                 up = true;

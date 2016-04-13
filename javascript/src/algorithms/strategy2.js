@@ -25,7 +25,7 @@ function slopeDirection(hist) {
 }
 
 export default {
-    participant: 'Henrik Gustafsson2',
+    participant: 'Henrik Gustafsson: Direction of fitted line',
     getInstance: function () {
 
         /*
@@ -38,14 +38,17 @@ export default {
         var lastSlope       = 0;
         var slope           = 0;
 
-        const histLength    = 4
+        const histLength    = 4;
 
         return function (price, date) {
 
-            /* This method is based on finding local max and min. 
-                The method used is fitting a first order polynomial to the last n-values
-                and when this switches sign we have observed a local minima, the sign of 
-                the value before says if it is a minima or a maxima.
+            /* 
+            This method is more advnced than strategy1 and has a larger memory to find local minima
+            and maxima. Still never sell if you are not in the money. Looks at the slope of the best 
+            fitted regression line over the last 4 days and when this switches sign we have observed 
+            a local extreme point, the sign of the slope the day before determines if the local extreme
+            is a minima or a maxima and thus if it is time to sell or buy. 
+            Performs a little bit better and the test sums to 1206.
             */
             if(hist.length < histLength){
                 hist.push(price);
