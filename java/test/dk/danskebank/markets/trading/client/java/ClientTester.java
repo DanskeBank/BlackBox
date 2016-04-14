@@ -3,6 +3,11 @@ package dk.danskebank.markets.trading.client.java;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Random;
 
 import org.junit.BeforeClass;
@@ -48,14 +53,13 @@ public class ClientTester {
 	}
 	
 	@Test
-	public void testSlowDecisions() {
-		
+	public void testSlowDecisions() {	
 		try {
 			Random rnd = new Random(123);
 			sample.tick(0.001);
 			long start = System.nanoTime();
 			for(int i=0 ; i < 10000; i++) {
-				sample.tick(rnd.nextDouble()*100000);			
+				sample.tick(rnd.nextDouble()*10000);			
 			}
 			long end = System.nanoTime();
 			
@@ -67,4 +71,25 @@ public class ClientTester {
 			fail("Exception happen while streaming prices:"+e.getMessage());
 		}
 	}
+	/*
+	@Test
+	public void testIntl() throws NumberFormatException, IOException{
+		FileInputStream fstream = new FileInputStream("price.txt");
+		BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
+
+		String strLine;
+		
+		while ((strLine = br.readLine()) != null)   {
+			//System.out.println(strLine);
+			double data = Double.valueOf(strLine);
+			try {
+				sample.tick(data);
+			} catch(Exception e) {
+				fail("Exception happen while streaming prices:"+e.getMessage());
+			}
+			
+		}
+		br.close();
+	}
+	*/
 }
