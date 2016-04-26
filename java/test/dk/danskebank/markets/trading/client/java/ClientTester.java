@@ -44,7 +44,7 @@ public class ClientTester {
 	public void testStrategy() {
 		try {
 			
-			Scanner s = new Scanner(new File("stockPrices2007_2008.txt"));
+			Scanner s = new Scanner(new File("stockPrices2013_2015.txt"));
 			String lastLine = "";
 			while(s.hasNextLine()) {
 				String line = s.nextLine();
