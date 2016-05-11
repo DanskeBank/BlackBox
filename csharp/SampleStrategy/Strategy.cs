@@ -32,11 +32,6 @@
             _hasPosition = !_hasPosition;
             if (_hasPosition)
                 return TradeAction.Sell;
-            int i = 0;
-            while (true)
-            {
-                i++;
-            }
 
             return TradeAction.Buy;
             
