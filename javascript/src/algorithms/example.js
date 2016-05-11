@@ -41,8 +41,8 @@ export default {
          * for a specific instrument.
          */
         var callsToMe = 0;
-
-        return function (date, price) {
+        	
+        return function (price) {
             //NOTE: Since this function will be called around 7.000 tiems for an instrument the line
             //below is really causing a lot of spam :)
             //console.log(`Number of calls: ${++callsToMe}`, date, price);
