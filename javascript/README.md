@@ -4,7 +4,7 @@ To get it to work you need to have Node 5.0.0 or later installed on your system,
 
  ```
  //Navigate to root folder of project.
- cd cashflow
+ cd javascript //That is, this folder
  //Install dependencies.
  npm install
  //Run the application, this will run all algorithms against the provided data and produce the output files.
