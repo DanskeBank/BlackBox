@@ -32,7 +32,7 @@ namespace StrategyTests
                 int Sells = 0;
                 int DoNothings = 0;
 
-                var tradingPrices = prices.Select(price =>
+                foreach (var price in prices)
                 {
                     price.Action = _strategy.Run(price.Value);
                     switch (price.Action)
@@ -47,9 +47,7 @@ namespace StrategyTests
                             Sells++;
                             break;
                     }
-                    price.Value = decimal.Round(decimal.Round(price.Value, 2) + 0.001m, 2);
-                    return price;
-                });
+                }
                 Console.WriteLine($"Processing {_strategy.UniqueName} on {jsonName} prices ...");
                 Console.WriteLine("Bought {0} times", Buys);
                 Console.WriteLine("Did nothing {0} times", DoNothings);
