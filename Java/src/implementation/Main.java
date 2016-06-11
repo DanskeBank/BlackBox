@@ -37,7 +37,7 @@ public class Main {
 		Path currentRelativePath = Paths.get("");	
 
 		String quotes = currentRelativePath.toAbsolutePath().toString() + "\\data";
-		
+
 	try{			
 			Path path = Paths.get(quotes);
 			DirectoryStream<Path> jsonStream = Files.newDirectoryStream(path);
