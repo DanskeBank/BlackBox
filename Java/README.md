@@ -5,9 +5,11 @@ Good luck!
 
 Running without eclipse in OSX/Linux:
 
-* put json-simple.jar in src-folder. (get in here: http://www.java2s.com/Code/Jar/j/Downloadjsonsimplejar.htm)
-* cd to src
+* change line in `/Java/src/implementation/Main.java:39` to
+`String quotes = currentRelativePath.toAbsolutePath().toString() + "/data";` (only for non-windows-users)
+* put json-simple.jar in Java-folder. (get in here: http://www.java2s.com/Code/Jar/j/Downloadjsonsimplejar.htm)
+* cd to Java-folder
 * compile with `javac -classpath json-simple.jar **/*.java`
-* run with `java -cp .:json-simple.jar implementation.Main`
+* run with `java -cp src:json-simple.jar implementation.Main`
 
-BTW remember to fix filepath in Main.java (right now it uses backslashes and points to the wrong dir. I recommend hardcoding the path to the data-folder.)
+Now Main assumes its run from the Java-folder, hardcode the path and you can run it from whereever.
