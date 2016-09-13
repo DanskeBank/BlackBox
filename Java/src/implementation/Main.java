@@ -36,9 +36,9 @@ public class Main {
 	public static void main(String[] args) throws IOException, InstantiationException, IllegalAccessException, ClassNotFoundException{
 		Path currentRelativePath = Paths.get("");	
 
-		String quotes = currentRelativePath.toAbsolutePath().toString() + "/data";
-
-	try{			
+		String quotes = currentRelativePath.resolve("data").toAbsolutePath().toString();
+ 		
+ 		try{			
 			Path path = Paths.get(quotes);
 			DirectoryStream<Path> jsonStream = Files.newDirectoryStream(path);
 			List<Path> pathsToJson = new ArrayList<Path>();
