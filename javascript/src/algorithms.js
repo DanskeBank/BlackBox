@@ -65,7 +65,7 @@ function runAlgorithm(instruments, algorithm) {
                     let price = prices[i].Value;
                     let date = prices[i].Date;
 
-                    let action = algorithmInstance(price, date);
+                    let action = algorithmInstance(price);
 
                     switch (action) {
                         case ALLOWED_ACTIONS.BUY:
@@ -119,8 +119,6 @@ function runAlgorithm(instruments, algorithm) {
                 console.log('-> Do nothing:', doNothingCount);
                 console.log('-> Total actions', buyCount + sellCount + doNothingCount);
                 console.log('-> Number of actions matches number of price ticks?', totalActionsCount === prices.length);
-                console.log('Result');
-                console.log('-> PnL Result:', pnl.toFixed(2));
 
                 resolve({
                     participant: algorithm.participant,

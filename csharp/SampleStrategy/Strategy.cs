@@ -11,20 +11,32 @@
         {
             get
             {
-                return "YOUR_SHORT_NAME_HERE";
+                return "Mr McTrader";
             }
         }
 
         private bool _hasPosition = true;
 
+
         /// <summary>
-        /// Implement this method with your trading strategy
-        /// You always buy one equity and sell one
-        /// You can buy only one and then you need to sell it, meaning that more than one buy action would still keep the first bought equity
-        /// This class is a long living one so you can contain state in it (like historical prices)
-        /// You need to buy first in order to sell
-        /// AND REMEMBER, trading is easy - buy low, sell high!
-        /// </summary>
+        /// Implement this method with your trading strategy :)
+        /// You have three options: Buy, DoNothing or Sell.
+        /// You always buy one equity and sell one.
+        /// If you buy when you are already holding the stock, nothing will happend as you already own the equity.
+        /// The same thing goes for selling. Nothing will happend if you sell an equity you do not currently hold.
+        /// Remember to always rebuild this project before testing with the StrategyTests project :) Instructions for that beneath.
+        /// 
+        /// Before submitting, please test your strategy:
+        /// 1. Right click the project this file is a part of and press "Build". If you receive any errors you will need to fix these and
+        /// redo this step :)
+        /// 2. Now for the testing. Right click the StrategyTests project and press "Set as StartUp Project".
+        /// 
+        /// The file to commit your strategy through is found in:
+        /// 1. Right click the project and choose "Open folder in File Explorer".
+        /// 2. Navigate into bin/Debug.
+        /// 3. The file is the project name for this file(your strategy) with the file ending ".dll"
+        /// 3. Press F5 and receive statistics of the amount of Buys, DoNothing and the amount of times your strategy sold the equity.
+        /// 
         /// <param name="price">Current price for Equity</param>
         /// <returns>You need to return one decission out of three possible - Buy, Sell or DoNothing</returns>
         public TradeAction Run(decimal price)
@@ -34,6 +46,7 @@
                 return TradeAction.Sell;
 
             return TradeAction.Buy;
+            
         }
     }
 }
